@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Home from "../pages/home";
+
 import SearchPage from "../component/SearchPage";
 
 import Login from "../pages/Login";
@@ -34,6 +34,7 @@ import PaymentToken from "../pages/PaymentToken";
 import ProductHomeAdd from "../component/ProductHomeAdd";
 import Logo from "../pages/Logo";
 import LogoProfile from "../pages/LogoProfile";
+import Home from "../pages/Home";
 
 
 
