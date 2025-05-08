@@ -101,8 +101,13 @@ const Header = () => {
         <Search />
       </div>
 
-      <div className='text-blue-400 animate-bounce'>
-        <Booking/>
+      <div>
+        <div className='text-blue-400 animate-bounce'>
+          <Booking/>
+        </div>
+        <div>
+          <p className='animate-ping text-xs'>jungle</p>
+        </div>
       </div>
 
       <div>

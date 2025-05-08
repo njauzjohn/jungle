@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Axios from '../utils/Axios'
 import SummaryApi from '../common/SummaryApi'
-import { useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import AxiosToastError from '../utils/AxiosToastError'
 import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa";
@@ -23,6 +23,8 @@ const ProductDisplayPage = () => {
     const [loading,setLoading] = useState(false)
     const [image,setImage] = useState(0)
     const imageContainer = useRef()
+    const url = `/dashboard/productHome/`
+    const navigate = useNavigate()
     
     console.log("params",productId)
 
@@ -123,6 +125,9 @@ const ProductDisplayPage = () => {
         <div className='p-4 gap-2'>
             <h2 className=' bg-green-500 text-3xl rounded  font-semibold px-4 my-2 w-fit'>{data.name}</h2>
             
+        <Link to={url} className='bg-blue-300 w-fit rounded-full'>
+            visit shop
+        </Link>
             <Divider/>
             <div className='flex items-center gap-4'>
                 <div>
@@ -201,6 +206,8 @@ const ProductDisplayPage = () => {
             }
         
         </div> */}
+
+       
 
         </div>
 

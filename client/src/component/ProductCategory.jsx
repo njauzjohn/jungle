@@ -19,6 +19,7 @@ const ProductCategory = ({id,name}) => {
    console.log("data",data)
     const fetchCategoryProduct = async()=>{
         // ...SummaryApi.getProductCategory,
+        //updateProductHomeCategory
         try {
             setLoading(true)
             const responsed = await Axios({

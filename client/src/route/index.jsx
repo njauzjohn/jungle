@@ -30,6 +30,10 @@ import MenuHomeCard from "../component/MenuHomeCard";
 import MenuProduct from "../component/MenuProduct";
 import CheckoutPage from "../component/CheckoutPage";
 import CashoutPage from "../component/CashoutPage";
+import PaymentToken from "../pages/PaymentToken";
+import ProductHomeAdd from "../component/ProductHomeAdd";
+import Logo from "../pages/Logo";
+import LogoProfile from "../pages/LogoProfile";
 
 
 
@@ -93,6 +97,16 @@ const router = createBrowserRouter([
                         element : <Profile/>
                     },
                     {
+                        path : "Logo",
+                        element : <Logo/>
+                    },
+                    {
+                        path : "LogoProfile",
+                        element : <LogoProfile/>
+                    }
+                    ,
+                    ,
+                    {
                         path : "myOrder",
                         element : <MyOrder/>
                     },
@@ -110,6 +124,11 @@ const router = createBrowserRouter([
                         element : <AdminPemission><SubCategory/></AdminPemission>
                         //element : <SubCategory/>
                     },
+                    {
+                        path : 'paymentToken',
+                        element : <PaymentToken/>
+                    }  
+                    ,
                     {
                         path : 'upload-product',
                         //element :  <AdminPemission><UploadProduct/></AdminPemission> 
@@ -133,6 +152,10 @@ const router = createBrowserRouter([
                         path : 'HomeDisplay',
                         element : <HomeDisplay/>
                     },
+                    {
+                        path : 'productHome',
+                        element : <ProductHomeAdd/>
+                    }
                    
                     
 

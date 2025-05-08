@@ -17,6 +17,8 @@ const AddCartItem = ({data}) => {
   const [isAvailableinCart,setIsAvailableInCart] = useState(false)
   const [qty,setQty] = useState(0)
   const [cartItemDetails,setCartitemdetails] = useState()
+ 
+ 
   const handleToCart = async (e)=>{
         e.preventDefault()
         e.stopPropagation()
@@ -37,14 +39,27 @@ const AddCartItem = ({data}) => {
                 if(fetchCartItem){
                     fetchCartItem()
                 }
+               // localStorage.clear()
             }
             console.log("cart",responseData)
+
+            
 
         } catch (error) {
             AxiosToastError(error)
            //console.log("Cart",cart)
         }
     }
+
+    const handleclearcart =()=>{
+        localStorage.clear()
+        dispatch(handleAddItemCart([]))
+    }
+
+    // useEffect (()=>{
+    //     handleclearcart()
+    // },[])
+
 
     useEffect(()=>{
         const checkCartItem = cartItem.some(item  => item?.productId?._id === data?._id)
@@ -57,16 +72,20 @@ const AddCartItem = ({data}) => {
       //  console.log("CheckItem",checkCartItem)
     },[cartItem,data])
 
+
   const increaseQty =(e)=>{
     e.preventDefault()
     e.stopPropagation()
 
+    //updateCartItem(!cartItemDetails?._id,qty-1)
     updateCartItem(cartItemDetails?._id,qty+1)
   }
 
   const decreaseQty =(e)=>{
     e.preventDefault()
     e.stopPropagation()
+
+    
 
     if(qty === 0){
         deleteCartItem(cartItemDetails?._id)
@@ -76,6 +95,8 @@ const AddCartItem = ({data}) => {
         updateCartItem(cartItemDetails?._id,qty-1)
       
     }
+
+    
 
    
   }

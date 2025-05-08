@@ -156,6 +156,19 @@ const UploadProduct = () => {
     </div>
     <div>
       <form onSubmit={handleSubmit} className='grid gap-2 p-2'>
+      <div className='grid gap-1 '>
+            <label htmlFor='ShopName'>Shop Name</label>
+            <input
+            id='ShopName'
+              type ='text'
+              placeholder='Enter shop name'
+              value={data.ShopName}
+              name='ShopName'
+              onChange={handleChange}
+              required
+              className='bg-slate-200 outline-none border focus-within:border-amber-300 rounded'
+            />
+        </div>
         <div className='grid gap-1 '>
             <label htmlFor='name'>Name</label>
             <input

@@ -82,8 +82,8 @@ const UserMenu = ({close}) => {
                     )
                 }
              */}
-                <Link onClick={handleClose} to={"/dashboard/upload-product"}className='px-2 hover:bg-green-200'>Upload Product</Link>
-            
+                <Link onClick={handleClose} to={"/dashboard/paymentToken"}className='px-2 hover:bg-green-200'>Upload Product</Link>
+                {/* upload-product */}
                 {/* {
                     isAdmin(user.role) && (
                         
@@ -91,7 +91,7 @@ const UserMenu = ({close}) => {
                 }  */}
            
                 <Link onClick={handleClose} to={"/dashboard/product"}className='px-2 hover:bg-green-200'>product</Link>
-                
+               {/*  */}
 
             <Link onClick={handleClose} to={"/dashboard/myOrder"}className='px-2 hover:bg-green-200'>My orders</Link>
             <Link onClick={handleClose} to={"/dashboard/address"}className='px-2 hover:bg-green-200'>Save address</Link>

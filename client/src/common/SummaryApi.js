@@ -9,6 +9,11 @@ const SummaryApi = {
         url : '/api/user/login',
         method : 'post'
     },
+    paymentTokens : {
+        url : '/api/user/paymentTokens',
+        method : 'post'
+    },
+    
     forgot_password : {
         url : '/api/user/forgot-password',
         method : 'post'
@@ -106,6 +111,17 @@ const SummaryApi = {
             url : '/api/product/create',
             method : 'post'
         },
+        CreateLogo : {
+            url : '/api/product/createLogo',
+            method : 'post'
+        },
+
+        getLogo : {
+            url : '/api/product/get-logo',
+            method : 'post'
+        }
+        ,
+
         getProduct : {
             url : '/api/product/get-product',
             method : 'post'

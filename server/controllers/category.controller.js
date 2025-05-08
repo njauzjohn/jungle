@@ -49,7 +49,7 @@ export const getCategoryController = async(request,response)=>{
     try {
         //const userId = request.userId
         //{_id : userId}
-        const data = await categoryModel.find().sort({createdAt : -1})
+        const data = await categoryModel.find().sort({createdAt : 1})
 
         return response.json({
             data : data,

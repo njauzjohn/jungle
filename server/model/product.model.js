@@ -67,6 +67,10 @@ const productSchema = new mongoose.Schema({
         type : Boolean,
         default : true
     }, 
+    ShopName :{
+        type : String,
+        default : ""
+    },
     beds :{
         type : String,
         default : ""

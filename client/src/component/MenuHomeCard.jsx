@@ -7,6 +7,9 @@ import { useState } from 'react'
 import { LuCircleUserRound } from "react-icons/lu";
 
 import MenuProfile from './MenuProfile'
+import AddCartItem from './AddToCartItem'
+import { Pricecurrency } from '../utils/Pricecurrency'
+import { DiscoutPrice } from '../utils/DiscountPrice'
 
 const MenuHomeCard = ({data}) => {
 
@@ -33,13 +36,15 @@ const MenuHomeCard = ({data}) => {
                         <div className='p-2 w-40 bg-blue-300 rounded'>{data?.name}</div>
                         <div className='p-2 w-40 bg-green-300 rounded'>{data?.unit}</div>
                         <div className='p-2 w-40 bg-slate-300 rounded'>{data?.description}</div>
-                        
+                        <div className=' bg-blue-300 rounded'>{Pricecurrency(DiscoutPrice(data.price))}</div>
+
+
                     </Link> 
 
           
-                    
+                   <AddCartItem/> 
      
-            { <MenuProfile/> }
+            {  }
     </div>
 
             

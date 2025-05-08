@@ -10,6 +10,7 @@ import uploadImageCloudinary from '../utils/uploadimageToCloudinary.js'
 import generateOtp from '../utils/generateOTP.js'
 import forgotPaswordTemplate from '../utils/forgotPasswordtemplate.js'
 import jwt from 'jsonwebtoken'
+import generatePaymentToken from '../utils/generatePaymentToken.js'
 
 
 export async function registerUserController(request, response){
@@ -175,6 +176,82 @@ export async function loginController(request,response){
             data : {
                 accessToken,
                 refreshtoken
+            }//
+        })
+
+    } catch (error) {
+        console.log(error)
+        // return response.status(500).json({
+        //     message : error.message || error,
+        //     error : true,
+        //     success : false
+        // })
+    }
+}
+
+//payment controller
+export async function PaymentController(request,response){
+    try {
+        const {email,password} = request.body
+
+        if(!email || !password){
+            return response.status(400).json({
+                message : "access granted",
+                error : true,
+                success : false
+            })
+        }
+        
+
+      const user = await UserModel.findOne({email})
+
+        if(!user){
+            return response.status(400).json({
+                message : " user not registered",
+                error : true,
+                success : false
+            })
+        }
+
+        if(user.status !== "Active"){
+            return response.status(400).json({
+                message : "Contact Admin",
+                error : true,
+                success : false
+            })
+        }
+
+        const checkPassword = await bcrypt.compare(password, user.password)
+
+        if(!checkPassword){
+            return response.status(400).json({
+                message : "check your password",
+                error : true,
+                success : false
+            })
+        }
+
+        const paymentToken = await generatePaymentToken(user._id)
+        //const refreshPaymenttoken = await generateRefreshToken(user._id)
+
+        const updateUser = await userModel.findByIdAndUpdate(user._id,{
+            last_login_date : new Date()
+        })
+        const cookieOption ={
+            httpOnly : true,
+            secure : true,
+            sameSite : "None"
+        }
+        response.cookie('paymentToken', paymentToken,cookieOption)
+        //response.cookie('refreshPaymentToken', refreshPaymenttoken,cookieOption)
+
+        return response.json({
+            message : "Login successfully",
+            error : false,
+            success : true,
+            data : {
+                paymentToken,
+               // refreshPaymenttoken
             }//
         })
 
@@ -652,7 +729,7 @@ export async function UserMenu(request, response)
 {
     try {
         const userId = request.userId
-        const user = await UserModel.findById(userId).select('-password -refresh_token')
+        const user = await UserModel.findById(userId).select('-password -refresh_token').populate('userId')
 
         return response.json({
             message : 'user details',
